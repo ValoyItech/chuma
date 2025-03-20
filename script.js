@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize AOS animations
     AOS.init({
         once: true,
-        disable: 'mobile'
+        // Removed disable: 'mobile' to enable animations on mobile
     });
 
     // Hero image slider
