@@ -1,6 +1,6 @@
 /* Base Styles */
 :root {
-    --primary-color: #2c3e50;
+    --primary-color: #ce861b;
     --secondary-color: #3498db;
     --accent-color: #e74c3c;
     --light-color: #ecf0f1;
@@ -54,7 +54,7 @@ body {
 }
 
 .logo-container img {
-    height: 60px;
+    height: 100px;
     margin-right: 1rem;
     transition: transform 0.3s ease;
 }
