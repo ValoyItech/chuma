@@ -1,0 +1,446 @@
+/* Base Styles */
+:root {
+    --primary-color: #ce861b;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --black: #000000;
+    --grey: #888888;
+    --transparent-white: rgba(255, 255, 255, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.header.hidden {
+    transform: translateY(-100%);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: translateX(10px);
+}
+
+.logo-container img {
+    height: 70px;
+    margin-right: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.logo-container img:hover {
+    transform: scale(1.05);
+}
+
+.logo-text h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+}
+
+.logo-text h1 .black {
+    color: var(--black);
+    font-weight: 700;
+}
+
+.logo-text h1 .grey {
+    color: var(--grey);
+    font-weight: 400;
+}
+
+.logo-text h1:hover {
+    color: var(--secondary-color);
+}
+
+.logo-text p {
+    margin: 0.5rem 0 0;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.logo-text p:hover {
+    transform: translateX(5px);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.hamburger {
+    display: var(--black);
+    cursor: pointer;
+    width: 40px;
+    height: 30px;
+    margin-left: auto;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--black);
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+/* Sidebar Navigation */
+#sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.active {
+    transform: translateX(0);
+}
+
+#sidebar ul {
+    list-style: none;
+    flex-grow: 1;
+}
+
+#sidebar ul li {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#sidebar ul li a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+#sidebar ul li a:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+/* Search Section */
+.search-section {
+    padding: 5rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+input, select {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Product List Section */
+.product-list-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+#productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product img:hover {
+    transform: scale(1.05);
+}
+
+.product h3 {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    margin: 0;
+}
+
+.product p {
+    padding: 1rem;
+    color: var(--dark-color);
+}
+
+/* Quote Section */
+.quote-section {
+    padding: 5rem 2rem;
+    background-color: #fff;
+}
+
+.quote-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.quote-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 3rem;
+}
+
+.contact-info {
+    flex: 1;
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info i {
+    margin-right: 1rem;
+    color: var(--secondary-color);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.quote-form-container {
+    flex: 1;
+}
+
+#quote-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+#quote-form button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#quote-form button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .logo-container img {
+        height: 50px;
+    }
+
+    .logo-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .logo-text p {
+        font-size: 0.8rem;
+    }
+
+    #sidebar {
+        width: 100%;
+        padding-top: 50px;
+    }
+    
+    #sidebar ul li {
+        padding: 0.8rem;
+    }
+
+    .quote-container {
+        flex-direction: column;
+    }
+    
+    .contact-info,
+    .quote-form-container {
+        width: 100%;
+    }
+    
+    .contact-info {
+        margin-bottom: 3rem;
+    }
+
+    #productList {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation Styles */
+@keyframes slideFromLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFromRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFromTop {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideFromBottom {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Ensure search-section starts below the header */
+.search-section {
+    padding: 2rem;
+    margin-top: 130px; /* This should be at least the height of the header */
+    background-color: #fff;
+}
+
+/* Make input and select side by side */
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+input, select {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+/* Adjust for mobile */
+@media (max-width: 480px) {
+    input, select {
+        width: 100%;
+        min-width: 100%;
+    }
+}
