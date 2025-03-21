@@ -61,7 +61,7 @@ const products = [
       subcategory: "Doors",
       description: "High-quality lockset designed for security and ease of use. Suitable for residential and commercial doors.",
       price: "R100",
-      image: "images/lockset.jpg"
+      image: "images/Lockset.jpg"
     },
     {
       name: "Slab Blocks",
