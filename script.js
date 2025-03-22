@@ -77,3 +77,27 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollPosition = currentScrollPosition;
     });
 });
+
+// Gallery Slider
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.gallery-slide');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        if (index < 0) currentSlide = slides.length - 1;
+        if (index >= slides.length) currentSlide = 0;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Auto slide every 5 seconds
+    setInterval(nextSlide, 5000);
+    
+    // Initialize with first slide
+    showSlide(0);
+});
