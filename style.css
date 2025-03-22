@@ -546,3 +546,56 @@ footer {
     to { transform: translateY(0); opacity: 1; }
 }
 
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.hero-image {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+/* Hero Text */
+.hero-text-container {
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.hero-text-container h1 {
+    font-size: 2.5rem;
+    color: #ce861b;
+}
+
+.hero-text-container {
+    max-width: 90%; /* Ensures text doesn't stretch too wide */
+    font-size: clamp(1.2rem, 5vw, 2rem); /* Adjusts text size based on screen width */
+    text-align: center; /* Centers text for a balanced look */
+}
+
+@media (max-width: 768px) {
+    .hero-text-container {
+        padding: 20px; /* Adds spacing for smaller screens */
+        font-size: 1.5rem; /* Ensures text remains readable */
+    }
+}
+
