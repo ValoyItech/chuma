@@ -1,12 +1,11 @@
-// Toggle sidebar menu
 document.addEventListener('DOMContentLoaded', function() {
+    // Sidebar toggle
     const hamburger = document.querySelector('.hamburger');
     const sidebar = document.getElementById('sidebar');
-    
+
     hamburger.addEventListener('click', function() {
         sidebar.classList.toggle('active');
-        
-        // Animate hamburger icon
+
         const bars = document.querySelectorAll('.bar');
         if (sidebar.classList.contains('active')) {
             bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -19,70 +18,62 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', function(e) {
         if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
             sidebar.classList.remove('active');
-            
-            // Reset hamburger icon
             const bars = document.querySelectorAll('.bar');
             bars[0].style.transform = 'rotate(0) translate(0, 0)';
             bars[1].style.opacity = '1';
             bars[2].style.transform = 'rotate(0) translate(0, 0)';
         }
-    });
-
-    // Close menu when clicking a link
-    const links = document.querySelectorAll('#sidebar a');
-    links.forEach(link => {
-        link.addEventListener('click', function() {
-            sidebar.classList.remove('active');
-            
-            // Reset hamburger icon
-            const bars = document.querySelectorAll('.bar');
-            bars[0].style.transform = 'rotate(0) translate(0, 0)';
-            bars[1].style.opacity = '1';
-            bars[2].style.transform = 'rotate(0) translate(0, 0)';
-        });
     });
 
     // Initialize AOS animations
     AOS.init({
-        once: true,
-        // Removed disable: 'mobile' to enable animations on mobile
+        once: true
     });
 
-    // Hero image slider
+    // Hero Image Slider
     let currentImage = 0;
     const images = document.querySelectorAll('.hero-image');
-    
+
     function changeImage() {
-        images[currentImage].style.opacity = 0;
-        
+        images.forEach((img, index) => {
+            img.style.transform = `translateX(${(index - currentImage) * 100}%)`;
+            img.style.opacity = index === currentImage ? "1" : "0";
+        });
+
         currentImage = (currentImage + 1) % images.length;
-        
-        setTimeout(() => {
-            images[currentImage].style.opacity = 1;
-        }, 300);
     }
-    
-    // Change image every 5 seconds
+
     setInterval(changeImage, 5000);
+    changeImage(); // Show the first image
+
+    // Changing hero text dynamically
+    const heroText = document.getElementById('hero-text');
+    const heroTexts = [
+        "High-Performance Hardware Solutions Tailored for Excellence",
+        "Comprehensive Equipment Rental Services for Your Needs",
+        "Dependable and Efficient Power Backup Solutions"
+    ];
+    let currentText = 0;
+
+    function changeHeroText() {
+        heroText.textContent = heroTexts[currentText];
+        currentText = (currentText + 1) % heroTexts.length;
+    }
+
+    setInterval(changeHeroText, 4000);
 
     // Auto-hide header on scroll
     let lastScrollPosition = 0;
-
     window.addEventListener('scroll', function() {
         const currentScrollPosition = window.scrollY;
-        
         if (currentScrollPosition > lastScrollPosition) {
-            // Scrolling down
             document.querySelector('.header').classList.add('hidden');
         } else {
-            // Scrolling up
             document.querySelector('.header').classList.remove('hidden');
         }
-        
         lastScrollPosition = currentScrollPosition;
     });
 });
