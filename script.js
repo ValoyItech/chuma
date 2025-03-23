@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Close sidebar when clicking outside
     document.addEventListener('click', function(e) {
         if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
             sidebar.classList.remove('active');
@@ -26,6 +27,18 @@ document.addEventListener('DOMContentLoaded', function() {
             bars[1].style.opacity = '1';
             bars[2].style.transform = 'rotate(0) translate(0, 0)';
         }
+    });
+
+    // Close sidebar when a menu item is clicked
+    const menuItems = sidebar.querySelectorAll('a');
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            const bars = document.querySelectorAll('.bar');
+            bars[0].style.transform = 'rotate(0) translate(0, 0)';
+            bars[1].style.opacity = '1';
+            bars[2].style.transform = 'rotate(0) translate(0, 0)';
+        });
     });
 
     // Initialize AOS animations
@@ -77,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollPosition = currentScrollPosition;
     });
 });
+
 
 // Gallery Slider
 document.addEventListener('DOMContentLoaded', function() {
